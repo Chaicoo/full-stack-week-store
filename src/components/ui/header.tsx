@@ -7,6 +7,7 @@ import { Sheet, SheetContent, SheetHeader, SheetTrigger } from "./sheet";
 import { signIn, signOut, useSession } from "next-auth/react";
 import { Avatar, AvatarFallback, AvatarImage } from "./avatar";
 import { Separator } from "./separator";
+import { ModeToggle } from "./theme-button";
 
 const Header = () => {
     const { status, data } = useSession();
@@ -28,9 +29,13 @@ const Header = () => {
             </SheetTrigger>
 
             <SheetContent side="left">
-                <SheetHeader className="text-left text-lg font-semibold">
+            <SheetHeader className="flex flex-row justify-between text-left text-lg font-semibold mt-7">
                     Menu
-                </SheetHeader>
+                <div className="text-right">
+                    <ModeToggle />
+                </div>
+            </SheetHeader>
+
 
                 {
                     status === "authenticated" && data?.user && (
